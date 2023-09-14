@@ -15,6 +15,8 @@
       function preview(websiteLink, host) {
         console.log("Preview is running.", websiteLink);
       const webisteWindow = window.open(websiteLink, "_blank");
+        
+      console.log("website window", websiteWindow);
       window.addEventListener("message", function(event) {
         console.log("Listened to event", event);
         if (event.origin !== host) {
@@ -30,8 +32,6 @@
         console.log("preview website should be closed and here is the data sent", event.data);
       });
       webisteWindow.postMessage({ message: "previewVwo" }, host || websiteLink);
-        
-      console.log("website window", websiteWindow);
       }
       const el = document.getElementById('app');
       el.addEventListener('click', e => {

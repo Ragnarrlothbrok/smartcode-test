@@ -12,27 +12,30 @@
     </div>
     <script>
       function preview(websiteLink, host) {
-  const webisteWindow = window.open(websiteLink, "_blank");
-  window.addEventListener("message", function(event) {
-    if (event.origin !== host) {
-      console.log("ignoring messages from", event.origin);
-      return;
-    }
-
-    if (event.data.message !== "previewConfirmation") {
-      console.log("ignoring messages like", event.data.message);
-      return;
-    }
-
-    console.log("preview website should be closed and here is the data sent", event.data);
-  });
-  webisteWindow.postMessage({ message: "previewVwo" }, host || websiteLink);
-}
-const el = document.getElementById('app');
-el.addEventListener('click', e => {
-  const url = 'https://apteline.pl/?_vwo_m=%7B%22_vwo_cc%22%3A%7B%22app%22%3A%22local%22%2C%22enteredUrl%22%3A%22https%3A%2F%2Fapteline.pl%2F%22%2C%22accountId%22%3A735612%7D%7D';
-  preview(url)
-})
+      const webisteWindow = window.open(websiteLink, "_blank");
+      window.addEventListener("message", function(event) {
+        console.log("Listened to event", event);
+        if (event.origin !== host) {
+          console.log("ignoring messages from", event.origin);
+          return;
+        }
+    
+        if (event.data.message !== "previewConfirmation") {
+          console.log("ignoring messages like", event.data.message);
+          return;
+        }
+    
+        console.log("preview website should be closed and here is the data sent", event.data);
+      });
+      webisteWindow.postMessage({ message: "previewVwo" }, host || websiteLink);
+        
+      console.log("website window", websiteWindow);
+      }
+      const el = document.getElementById('app');
+      el.addEventListener('click', e => {
+        const url = 'https://apteline.pl/?_vwo_m=%7B%22_vwo_cc%22%3A%7B%22app%22%3A%22local%22%2C%22enteredUrl%22%3A%22https%3A%2F%2Fapteline.pl%2F%22%2C%22accountId%22%3A735612%7D%7D';
+        preview(url)
+      })
     </script>
   </body>
 </html>

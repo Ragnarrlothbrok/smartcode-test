@@ -22,6 +22,7 @@
 function previewClient(websiteLink) {
   var child = window.open(websiteLink, "_blank");
   var leftDomain = false;
+  console.log("opened the tab", child);
   child.postMessage({ message: "requestResult" }, "https://apteline.pl");
   // var interval = setInterval(function() {
   //     try {

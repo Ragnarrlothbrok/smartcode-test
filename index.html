@@ -21,35 +21,36 @@
 function previewClient(websiteLink) {
   var child = window.open(websiteLink, "_blank");
   var leftDomain = false;
-  var interval = setInterval(function() {
-      try {
-          if (child.document.domain === document.domain) {
-              if (leftDomain && child.document.readyState === "complete") {
-                  // we're here when the child window returned to our domain
-                  clearInterval(interval);
-                  alert("returned: " + child.document.URL);
-                  child.postMessage({ message: "requestResult" }, "https://apteline.pl");
-              }
-          }
-          else {
-              // this code should never be reached, 
-              // as the x-site security check throws
-              // but just in case
-              leftDomain = true;
-          }
-      }
-      catch(e) {
-        console.log("error", e)
-          // we're here when the child window has been navigated away or closed
-          if (child.closed) {
-              clearInterval(interval);
-              alert("closed");
-              return; 
-          }
-          // navigated to another domain  
-          leftDomain = true;
-      }
-  }, 500);
+  child.postMessage({ message: "requestResult" }, "https://apteline.pl");
+  // var interval = setInterval(function() {
+  //     try {
+  //         if (child.document.domain === document.domain) {
+  //             if (leftDomain && child.document.readyState === "complete") {
+  //                 // we're here when the child window returned to our domain
+  //                 clearInterval(interval);
+  //                 alert("returned: " + child.document.URL);
+  //                 child.postMessage({ message: "requestResult" }, "https://apteline.pl");
+  //             }
+  //         }
+  //         else {
+  //             // this code should never be reached, 
+  //             // as the x-site security check throws
+  //             // but just in case
+  //             leftDomain = true;
+  //         }
+  //     }
+  //     catch(e) {
+  //       console.log("error", e)
+  //         // we're here when the child window has been navigated away or closed
+  //         if (child.closed) {
+  //             clearInterval(interval);
+  //             alert("closed");
+  //             return; 
+  //         }
+  //         // navigated to another domain  
+  //         leftDomain = true;
+  //     }
+  // }, 500);
 }
 const el = document.getElementById('app');
 el.addEventListener('click', e => {

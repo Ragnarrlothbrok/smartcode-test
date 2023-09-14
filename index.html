@@ -31,7 +31,7 @@
     
         console.log("preview website should be closed and here is the data sent", event.data, websiteWindow);
       });
-        setTimeout(() => websiteWindow.postMessage({ message: "previewVwo" }, host || websiteLink), 3000)
+        setTimeout(() => websiteWindow.postMessage({ message: "previewVwo" }, host || websiteLink), 10000)
       
       }
       const el = document.getElementById('app');

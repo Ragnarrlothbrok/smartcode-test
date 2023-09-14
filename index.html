@@ -11,7 +11,9 @@
       <button id="app">Check Url</button>
     </div>
     <script>
+      console.log("Script is running.");
       function preview(websiteLink, host) {
+        console.log("Preview is running.", websiteLink);
       const webisteWindow = window.open(websiteLink, "_blank");
       window.addEventListener("message", function(event) {
         console.log("Listened to event", event);

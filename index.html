@@ -14,7 +14,7 @@
       console.log("Script is running.");
       function preview(websiteLink, host) {
         console.log("Preview is running.", websiteLink);
-      const webisteWindow = window.open(websiteLink, "_blank");
+      const webisteWindow = window.open(websiteLink);
         
       console.log("website window", websiteWindow);
       window.addEventListener("message", function(event) {

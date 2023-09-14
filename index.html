@@ -14,7 +14,7 @@
       console.log("Script is running.");
       function preview(websiteLink, host) {
         console.log("Preview is running.", websiteLink);
-      let webisteWindow = window.open(websiteLink);
+      let websiteWindow = window.open(websiteLink);
         
       console.log("website window", websiteWindow);
       window.addEventListener("message", function(event) {
@@ -31,7 +31,7 @@
     
         console.log("preview website should be closed and here is the data sent", event.data);
       });
-      webisteWindow.postMessage({ message: "previewVwo" }, host || websiteLink);
+      websiteWindow.postMessage({ message: "previewVwo" }, host || websiteLink);
       }
       const el = document.getElementById('app');
       el.addEventListener('click', e => {

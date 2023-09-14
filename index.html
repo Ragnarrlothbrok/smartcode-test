@@ -12,10 +12,11 @@
     </div>
     <script>
       window.addEventListener("message", function(ev) {
-  if (ev.data.message === "deliverResult") {
-      alert("result: " + ev.data.result);
-      ev.source.close();
-  }
+        console.log("received message", ev);
+        if (ev.data.message === "deliverResult") {
+            alert("result: " + ev.data.result);
+            // ev.source.close();
+        }
 });
       
 function previewClient(websiteLink) {
